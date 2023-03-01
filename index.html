@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake</title>
     <script defer src="app.js" type="module"></script>
     <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-    <div id="game"></div>
-</body>
+  </head>
+  <body>
+
+
+
+    <div class="wrapper">
+        
+      <div class="snake-game">
+        <div class="score"><span class="span-score" id="score">0000</span></div>
+        <div id="game"></div>
+        <div></div>
+      </div>
+      <div>
+        <button class="btn" id="restart">Restart game</button>
+      </div>
+    </div>
+    <!-- <div class="swipe">Swipe to start</div> -->
+    <div class="game-over hidden">
+      Game Over
+      <span class="game-over-score"></span>
+      <span class="game-over-best-score"></span>
+      <button class="btn" id="new-game">New game</button>
+    </div>
+
+  </body>
 </html>

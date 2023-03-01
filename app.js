@@ -1,8 +1,5 @@
 "use strict";
 // TODO
-// dodać sterowanie a, s, d, w
-// dodać guziki do sterowania na mobile
-// funkcja wynik
 // przyspieszanie prędkości wraz ze wzrostem długości snake
 
 import {
@@ -14,6 +11,7 @@ import {
 } from "./snake.js";
 import { update as updateFood, draw as drawFood } from "./food.js";
 import { outsideGrid } from "./grid.js";
+import { score } from "./snake.js";
 
 let lastRenderTime = 0;
 const gameBoard = document.getElementById("game");
@@ -21,9 +19,22 @@ let gameOver = false;
 
 function main(currentTime) {
   if (gameOver) {
-    if(confirm('You lost. Press ok to restart.')) {
-        window.location = '/snake/index.html';
+    document.querySelector(".game-over").classList.remove("hidden");
+
+    //saving data to local storage
+    let bestScore = +localStorage.getItem("bestScore");
+    if (!bestScore) {
+      localStorage.setItem("bestScore", score);
+      bestScore = score;
+    } else if (score > bestScore) {
+      localStorage.setItem("bestScore", score);
+      bestScore = score;
     }
+    document.querySelector(".game-over-score").innerText = `Score: ${score}`;
+    document.querySelector(
+      ".game-over-best-score"
+    ).innerText = `Best score : ${bestScore}`;
+
     return;
   }
 
@@ -39,7 +50,6 @@ function main(currentTime) {
   update();
   draw();
 }
-
 window.requestAnimationFrame(main);
 
 function update() {
@@ -57,3 +67,8 @@ function draw() {
 function checkForDeath() {
   gameOver = outsideGrid(getSnakeHead()) || snakeIntersection();
 }
+
+// const swipeEl = document.querySelector(".swipe");
+// swipeEl.addEventListener("click", () => {
+//   swipeEl.classList.add("hidden");
+// });
