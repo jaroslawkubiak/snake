@@ -6,30 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake</title>
     <script defer src="app.js" type="module"></script>
-    <link rel="stylesheet" href="style.css" />
+
+    <script>
+      let timeNow = Date.now();
+      document.querySelector(
+        "head"
+      ).innerHTML = `<link rel="stylesheet" href="style.css?v=${timeNow}" />`;
+    </script>
   </head>
   <body>
-
-
-
-    <div class="wrapper">
-        
-      <div class="snake-game">
-        <div class="score"><span class="span-score" id="score">0000</span></div>
-        <div id="game"></div>
-        <div></div>
+    <div class="container">
+      <div class="wrapper">
+        <div class="snake-game">
+          <div class="score">
+            <span class="span-score" id="score">0000</span>
+          </div>
+          <div id="game"></div>
+        </div>
       </div>
       <div>
         <button class="btn" id="restart">Restart game</button>
+        <button class="btn" id="pause">Pause</button>
       </div>
     </div>
-    <!-- <div class="swipe">Swipe to start</div> -->
+
+    <div class="swipe hidden">Swipe to start</div>
     <div class="game-over hidden">
       Game Over
       <span class="game-over-score"></span>
       <span class="game-over-best-score"></span>
+      <span class="game-over-played"></span>
       <button class="btn" id="new-game">New game</button>
     </div>
-
   </body>
 </html>
