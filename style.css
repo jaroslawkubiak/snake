@@ -10,21 +10,20 @@
 }
 
 body {
-  margin: 0px;
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
   background-color: var(--bg-color);
   position: relative;
-  /* height: 100vh;
-  width: 100vw; */
   display: flex;
-  font-size: 12px;
-  box-sizing: border-box;
   font-family: arcade;
+  font-size: 12px;
+  /* overflow: hidden; */
 }
 
 .container {
-  height: 100vh;
-  width: 100vw;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -75,18 +74,23 @@ body {
 }
 
 .swipe {
-  font-family: arcade;
-  background-color: #abd50198;
+  background-color: #abd501e1;
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 50px;
   font-size: 3rem;
 }
+.swipe:after {
+  content: "Swipe to start";
+}
 
+.swipe img {
+  height:70%;
+  margin-bottom: 30px;
+}
 /* .going-up {
   transform: rotate(0);
 }
@@ -116,15 +120,14 @@ body {
   content: "";
   display: block;
   position: absolute;
-  top: -25%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 65%;
-  height: 25%;
-  background-color: var(--snake-color);
-} */
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 35%;
+  background-color: var(--bg-color);
+}
 
-/* .snake-head::before {
+.snake-head::before {
   content: "";
   display: block;
   position: absolute;
@@ -146,10 +149,21 @@ body {
   position: relative;
 }
 
+.food::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  background-color: var(--bg-color);
+}
+
 .score {
   font-family: arcade;
   font-size: 2rem;
-  
   margin-bottom: 5px;
   border-bottom: 5px solid var(--snake-color);
 }
@@ -170,10 +184,16 @@ body {
   font-family: arcade;
 }
 
+.btn:hover {
+  background-color: var(--snake-color);
+  color: var(--bg-color);
+}
+
 #restart {
   z-index: 10;
   margin-bottom: 20px;
 }
+
 
 #new-game {
   font-size: 1.4rem;
@@ -186,3 +206,70 @@ body {
   border: 3px solid var(--snake-color);
 }
 
+/* phones in landscape mode */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
+  .container {
+    margin-top: 150px;
+    justify-content: start;
+  }
+
+  .swipe img {
+    height:30%;
+  }
+  
+  .game-over {
+    padding-top: 200px;
+    justify-content: start;
+  }
+}
+
+/* PC  */
+@media screen and (width > 845px) {
+
+  .container {
+    margin-top: 50px;
+    justify-content: start;
+  }
+  .btn {
+    border: 6px solid var(--snake-color);
+
+    font-size: 2rem;
+    padding-top: 16px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+  }
+
+  .swipe {
+    font-size: 6rem;
+  }
+  .swipe:after {
+    content: "Click to start";
+  }
+  .swipe img {
+    height:50%;
+  }
+
+  .game-over {
+    padding-top: 200px;
+    justify-content: start;
+    gap: 20px;
+    font-size: 4rem;
+  }
+  #new-game {
+    font-size: 3rem;
+    padding-top: 6px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 1px;
+
+  }
+  .score {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    border-bottom: 10px solid var(--snake-color);
+  }
+  #game {
+    border: 10px solid var(--snake-color);
+  }  
+}
