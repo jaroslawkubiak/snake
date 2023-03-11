@@ -10,6 +10,10 @@ import { update as updateFood, draw as drawFood } from "./food.js";
 import { outsideGrid } from "./grid.js";
 import { score } from "./snake.js";
 
+// TODO
+// głowa i ogon - inne styl. dać oczy itp
+// ikonki - tło z gestami gdzie można używać oraz strzałki w PC
+
 let lastRenderTime = 0;
 const gameBoard = document.getElementById("game");
 const pauseBtn = document.getElementById("pause");
@@ -25,7 +29,7 @@ else swipeEl.classList.remove("hidden");
 // pause game button
 pauseBtn.addEventListener("click", () => {
   onPause = !onPause;
-  pauseBtn.classList.toggle('pause');
+  pauseBtn.classList.toggle("pause");
 });
 
 // refreshing game content on board
@@ -101,7 +105,10 @@ function showGameOver() {
 }
 
 // swipe to play info
-swipeEl.addEventListener("click", () => {
+function swipe() {
   swipeEl.classList.add("hidden");
   localStorage.setItem("played", 0);
-});
+}
+
+swipeEl.addEventListener("click", swipe);
+document.addEventListener("keydown", swipe);
