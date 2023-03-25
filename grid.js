@@ -1,5 +1,5 @@
 // game board size
-const GRID_SIZE = 21;
+const GRID_SIZE = 17;
 
 export function randomGridPosition() {
   return {

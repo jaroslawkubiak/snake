@@ -5,7 +5,7 @@ export let snakeSpeed = 5;
 
 const scoreElement = document.getElementById("score");
 let newSegment = 0;
-const snakeBody = [{ x: 11, y: 11, head: true, tail: false }];
+const snakeBody = [{ x: 8, y: 9, head: true, tail: false }];
 
 // updating snake position on gameBoard
 export function update() {
@@ -24,7 +24,7 @@ export function update() {
 
 export function draw(gameBoard) {
   snakeBody.forEach(segment => {
-    // const inputDirection = getInputDirection();
+    const inputDirection = getInputDirection();
     const snakeElement = document.createElement("div");
     snakeElement.style.gridRowStart = segment.y;
     snakeElement.style.gridColumnStart = segment.x;
@@ -33,14 +33,14 @@ export function draw(gameBoard) {
       snakeElement.classList.add("snake-head");
 
       // if snake head have some shape - changing snake head directions
-      // if (inputDirection.x === 0 && inputDirection.y === -1)
-      //   snakeElement.classList.add("going-up");
-      // if (inputDirection.x === 0 && inputDirection.y === 1)
-      //   snakeElement.classList.add("going-down");
-      // if (inputDirection.x === -1 && inputDirection.y === 0)
-      //   snakeElement.classList.add("going-left");
-      // if (inputDirection.x === 1 && inputDirection.y === 0)
-      //   snakeElement.classList.add("going-right");
+      if (inputDirection.x === 0 && inputDirection.y === -1)
+        snakeElement.classList.add("going-up");
+      if (inputDirection.x === 0 && inputDirection.y === 1)
+        snakeElement.classList.add("going-down");
+      if (inputDirection.x === -1 && inputDirection.y === 0)
+        snakeElement.classList.add("going-left");
+      if (inputDirection.x === 1 && inputDirection.y === 0)
+        snakeElement.classList.add("going-right");
     } else if (segment.tail) snakeElement.classList.add("snake-tail");
     else snakeElement.classList.add("snake");
 
