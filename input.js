@@ -59,11 +59,11 @@ el.addEventListener(
       return;
     }
 
-    var xUp = e.touches[0].clientX.toFixed(0);
-    var yUp = e.touches[0].clientY.toFixed(0);
+    let xUp = e.touches[0].clientX.toFixed(0);
+    let yUp = e.touches[0].clientY.toFixed(0);
 
-    var xDiff = moveX - xUp;
-    var yDiff = moveY - yUp;
+    let xDiff = moveX - xUp;
+    let yDiff = moveY - yUp;
 
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
       if (xDiff > 0) goLeft();
