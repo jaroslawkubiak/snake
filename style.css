@@ -3,6 +3,7 @@
   --snake-color: #203000;
   --food-color: #203000;
   --svg-color: rgba(127, 152, 120, 0.306);
+  --grid-size: 21;
 }
 
 @font-face {
@@ -67,8 +68,8 @@ svg {
   width: 50vmin;
   height: 50vmin;
   display: grid;
-  grid-template-rows: repeat(17, 1fr);
-  grid-template-columns: repeat(17, 1fr);
+  grid-template-rows: repeat(var(--grid-size), 1fr);
+  grid-template-columns: repeat(var(--grid-size), 1fr);
 }
 
 .hidden {
@@ -130,10 +131,10 @@ svg {
   background-color: var(--snake-color);
   border: 1px solid var(--bg-color);
   position: relative;
-  clip-path: polygon(51% 0, 80% 5%, 100% 41%, 100% 78%, 89% 100%, 12% 100%, 0 80%, 0% 43%, 20% 5%);
+  /* clip-path: polygon(51% 0, 80% 5%, 100% 41%, 100% 78%, 89% 100%, 12% 100%, 0 80%, 0% 43%, 20% 5%); */
 }
 
-.snake-head::after {
+/* .snake-head::after {
   content: "";
   display: block;
   position: absolute;
@@ -157,7 +158,7 @@ svg {
   height: 25%;
   background-color: var(--bg-color);
   clip-path: polygon(33% 0, 57% 13%, 74% 38%, 84% 69%, 68% 100%, 30% 100%, 6% 90%, 0 48%, 9% 11%);
-} 
+}  */
 
 .snake-tail {
   background-color: var(--snake-color);
